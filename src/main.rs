@@ -1,14 +1,10 @@
 fn main() {
-   // Order of program:
-   // 1. Retrieve number from user
-   // 2. Find all primes under that number
-   // - If it is even, and not 2, then not a prime
-   // - Maybe use the various prime checks (Mersenne and Fermat)
-   // 3. If not, see if two primes add to it
-   // - Find all primes less than number input and see if adding two of them equals that number
-   //
-   // A prime number is a natural number greater than 1 that is not
-   // a product of two smaller natural numbers.
+   println!("Give me a number:");
+   let number = prime_number_printer::from_user_get_positive_number();
 
-    println!("Hello, world!");
+   println!("The primes under that number are:");
+   let primes = prime_number_printer::sieve_of_eratosthenes(number);
+   println!("{:?}", primes);
+
+   println!("The following prime pairs equal your number:");
 }
