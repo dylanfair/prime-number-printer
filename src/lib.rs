@@ -47,3 +47,6 @@ pub fn from_user_get_positive_number() -> usize {
 
 }
 
+pub fn find_prime_pairs(number: usize, primes: Vec<usize>) {
+   // Need to check all pairs of the primes
+   // equal to the number given
