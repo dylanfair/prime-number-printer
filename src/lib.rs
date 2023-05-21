@@ -1,22 +1,22 @@
 /// This will only work for numbers under 10 million or so
 pub fn sieve_of_eratosthenes(number: usize) -> Vec<usize> {
-   let mut timevec = vec![true;number];
+   let mut truevec = vec![true;number];
    let mut primevec = vec![];
 
    let mut p = 2;
    while p * p <= number {
-      if timevec[p] == true {
+      if truevec[p] == true {
          let mut i = p*p;
          let inner_range = p*p..number;
          while inner_range.contains(&i) {
-            timevec[i] = false;
+            truevec[i] = false;
             i += p;
          }
       }
       p += 1;
    }
    for p in 2..number {
-      if timevec[p] {
+      if truevec[p] {
          primevec.push(p);
       }
    }
@@ -47,6 +47,21 @@ pub fn from_user_get_positive_number() -> usize {
 
 }
 
-pub fn find_prime_pairs(number: usize, primes: Vec<usize>) {
-   // Need to check all pairs of the primes
-   // equal to the number given
+pub fn find_prime_pairs(number: usize, mut primes: Vec<usize>) -> Vec<String> {
+   primes.sort(); // sort vector in case it isn't already
+   
+   let mut primepairs: Vec<String> = vec![];
+
+   for (i, prime) in primes.iter().enumerate() {
+      if *prime > number / 2 {
+         break;
+      }
+      for element in primes[i..].iter() {
+         println!("Checking {} with {}", prime, element);
+         if prime + element == number {
+            primepairs.push(format!("{prime} + {element}"));
+         }
+      }
+   }
+   return primepairs
+}

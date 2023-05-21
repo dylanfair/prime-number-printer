@@ -7,4 +7,6 @@ fn main() {
    println!("{:?}", primes);
 
    println!("The following prime pairs equal your number:");
+   let primepairs = prime_number_printer::find_prime_pairs(number, primes);
+   println!("{:?}", primepairs);
 }
